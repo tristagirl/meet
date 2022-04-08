@@ -1,3 +1,6 @@
+import { mockData } from './mock-data';
+import { getEvents } from './api';
+import { extractLocations, getEvents } from '../api';
 /**
  *
  * @param {*} events:
@@ -10,3 +13,14 @@
     var locations = [...new Set(extractLocations)];
     return locations;
   };
+  export const getEvents = async () => {
+    return mockData;
+  };
+  updateEvents = (location) => {
+    getEvents().then((events) => {
+      const locationEvents = events.filter((event) => event.location === location);
+      this.setState({
+        events: locationEvents
+      });
+    });
+  }

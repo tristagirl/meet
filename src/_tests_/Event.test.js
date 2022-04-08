@@ -18,36 +18,26 @@ describe('<Event /> component', () => {
         expect(EventWrapper.find('.location')).toHaveLength(1);
     })
 
-    test('render the summary', () => {
-        expect(EventWrapper.find('.summary')).toHaveLength(1);
-    })
-
-    test('render the date', () => {
+    test('render start date', () => {
         expect(EventWrapper.find('.start-date')).toHaveLength(1);
-    })
+    });
 
-    //collapse button
-
-    test('render the show details button', () => {
-        expect(EventWrapper.find('.show-details')).toHaveLength(1);
-    })
-
-    test('details are collapsed by default', () => {
+    test('event details are collapsed by default', () => {
         expect(EventWrapper.state('collapsed')).toBe(true);
-    })
+    });
 
-    test('open details when show details is clicked', () => {
-        EventWrapper.setState({
-            collapsed: true
-        });
-        EventWrapper.find('.show-details').simulate('click');
+    test('render details button', () => {
+        expect(EventWrapper.find('.details-button')).toHaveLength(1);
+    });
+
+    test('render details when show details button is clicked', () => {
+        EventWrapper.setState({ collapsed: true });
+        EventWrapper.find('.details-button').simulate('click');
         expect(EventWrapper.state('collapsed')).toBe(false);
     });
 
-    test('hide details when clicking button again after showing details', () => {
-        EventWrapper.setState({
-            collapsed: false
-        });
+    test('hide details when button is clicked again', () => {
+        EventWrapper.setState({ collapsed: false });
         EventWrapper.find('.hide-details').simulate('click');
         expect(EventWrapper.state('collapsed')).toBe(true);
     });
