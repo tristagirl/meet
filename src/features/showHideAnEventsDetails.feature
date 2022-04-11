@@ -14,3 +14,4 @@ Feature: Show/hide and event's details
     Given an event element is expanded
     When the user clicks on an event
     Then the event element should collapse.
+    
