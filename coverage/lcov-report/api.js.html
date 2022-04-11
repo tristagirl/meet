@@ -21,7 +21,7 @@
     <div class='clearfix'>
     </div>
   </div>
-  <div class='status-line high'></div>
+  <div class='status-line low'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -34,35 +34,269 @@
 9
 10
 11
-12</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
- *
- * @param {*} events:
- * This function takes an events array, then uses map to create a new array with only locations.
- * It will also remove all duplicates by creating another new array using the spread operator and spreading a Set.
- * The Set will remove all duplicates from the array.
- */
- export const extractLocations = (events) =&gt; {
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { mockData } from "./mock-data";
+import axios from "axios";
+import NProgress from 'nprogress';
+&nbsp;
+export const extractLocations = (events) =&gt; {
     var extractLocations = events.map((event) =&gt; event.location);
     var locations = [...new Set(extractLocations)];
     return locations;
-  };</pre></td></tr>
+};
+&nbsp;
+const checkToken = <span class="fstat-no" title="function not covered" >as</span>ync (accessToken) =&gt; {
+    const result = <span class="cstat-no" title="statement not covered" >await fetch(`https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=${accessToken}`</span>
+    )
+        .then (<span class="fstat-no" title="function not covered" >(r</span>es) =&gt; <span class="cstat-no" title="statement not covered" >res.json())</span>
+        .catch(<span class="fstat-no" title="function not covered" >(e</span>rror) =&gt; <span class="cstat-no" title="statement not covered" >error.json())</span>;
+    
+<span class="cstat-no" title="statement not covered" >    return result;</span>
+};
+&nbsp;
+const getToken = <span class="fstat-no" title="function not covered" >as</span>ync (code) =&gt; {
+    const encodeCode = <span class="cstat-no" title="statement not covered" >encodeURIComponent(code);</span>
+    const { access_token } = <span class="cstat-no" title="statement not covered" >await fetch('https://jxe1pcx9kc.execute-api.eu-central-1.amazonaws.com/dev/api/token' + '/' + encodeCode</span>
+    )
+        .then(<span class="fstat-no" title="function not covered" >(r</span>es) =&gt; {
+<span class="cstat-no" title="statement not covered" >            return res.json();</span>
+        })
+        .catch(<span class="fstat-no" title="function not covered" >(e</span>rror) =&gt; <span class="cstat-no" title="statement not covered" >error)</span>;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    access_token &amp;&amp; localStorage.setItem('access_token', access_token);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    return access_token;</span>
+};
+&nbsp;
+const removeQuery = <span class="fstat-no" title="function not covered" >()</span> =&gt; {
+<span class="cstat-no" title="statement not covered" >    if (window.history.pushState &amp;&amp; window.location.pathname) {</span>
+        var newurl = 
+<span class="cstat-no" title="statement not covered" >        window.location.protocol + '//' + </span>
+        window.location.host + 
+        window.location.pathname;
+<span class="cstat-no" title="statement not covered" >        window.history.pushState('', '', newurl);</span>
+    } else {
+<span class="cstat-no" title="statement not covered" >        newurl = </span>
+        window.location.protocol + '//' + 
+        window.location.host;
+<span class="cstat-no" title="statement not covered" >        window.history.pushState('', '', newurl);</span>
+    }
+};
+&nbsp;
+export const getEvents = async () =&gt; {
+    NProgress.start();
+&nbsp;
+    <span class="missing-if-branch" title="else path not taken" >E</span>if (window.location.href.startsWith('http://localhost')) {
+        NProgress.done();
+        return mockData;
+    }
+&nbsp;
+    const token = <span class="cstat-no" title="statement not covered" >await getAccessToken();</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    if (token) {</span>
+<span class="cstat-no" title="statement not covered" >        removeQuery();</span>
+        const url = <span class="cstat-no" title="statement not covered" >'https://jxe1pcx9kc.execute-api.eu-central-1.amazonaws.com/dev/api/get-events' + '/' + token;</span>
+        const result = <span class="cstat-no" title="statement not covered" >await axios.get(url);</span>
+<span class="cstat-no" title="statement not covered" >        if (result.data) {</span>
+            var locations = <span class="cstat-no" title="statement not covered" >extractLocations(result.data.events);</span>
+<span class="cstat-no" title="statement not covered" >            localStorage.setItem('lastEvents', JSON.stringify(result.data));</span>
+<span class="cstat-no" title="statement not covered" >            localStorage.setItem('locations', JSON.stringify(locations));</span>
+        }
+<span class="cstat-no" title="statement not covered" >        NProgress.done();</span>
+<span class="cstat-no" title="statement not covered" >        return result.data.events;</span>
+    }
+};
+&nbsp;
+export const getAccessToken = <span class="fstat-no" title="function not covered" >as</span>ync () =&gt; {
+    const accessToken = <span class="cstat-no" title="statement not covered" >localStorage.getItem('access_token');</span>
+&nbsp;
+    const tokenCheck = <span class="cstat-no" title="statement not covered" >accessToken &amp;&amp; (await checkToken(accessToken));</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    if (!accessToken || tokenCheck.error) {</span>
+<span class="cstat-no" title="statement not covered" >        await localStorage.removeItem('access_token');</span>
+        const searchParams = <span class="cstat-no" title="statement not covered" >new URLSearchParams(window.location.search);</span>
+        const code = <span class="cstat-no" title="statement not covered" >await searchParams.get('code');</span>
+<span class="cstat-no" title="statement not covered" >        if (!code) {</span>
+            const results = <span class="cstat-no" title="statement not covered" >await axios.get('https://jxe1pcx9kc.execute-api.eu-central-1.amazonaws.com/dev/api/get-auth-url');</span>
+            const { authUrl } = <span class="cstat-no" title="statement not covered" >results.data;</span>
+<span class="cstat-no" title="statement not covered" >            return (window.location.href = authUrl);</span>
+        }
+<span class="cstat-no" title="statement not covered" >        return code &amp;&amp; getToken(code);</span>
+    }
+<span class="cstat-no" title="statement not covered" >    return accessToken;</span>
+}</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Apr 07 2022 16:21:27 GMT-0500 (Central Daylight Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Apr 11 2022 12:41:44 GMT-0500 (Central Daylight Time)
 </div>
 </div>
 <script src="prettify.js"></script>

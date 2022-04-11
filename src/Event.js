@@ -16,12 +16,10 @@ render() {
   const { collapsed } = this.state;
   return (
     <div className='event'>
-
-<h2 className="summary">{event.summary}
-</h2>
-<p className="start-date">
-  {event.start.dateTime} ({event.start.timeZone})
-</p>
+    <h2 className="summary">{event.summary}</h2>
+    <p className="start-date">
+       {event.start.dateTime} ({event.start.timeZone})
+    </p>
 
 <p className="location">
 @{event.summary} | {event.location}
@@ -35,7 +33,10 @@ render() {
 </button>
 
 {!collapsed &&
-<div className={`extra-details ${this.state.collapsed ? "hide" : "show"}`}>
+<div className={`extra-details ${this.state.collapsed ? "hide" : "show"
+}`}
+>
+
 <h3>About the event:</h3>
 <a href={event.htmlLink} rel="noreferrer" target="_blank">
     See details on Google Calendar
@@ -49,7 +50,4 @@ render() {
 }
 
 }
-
-
-
 export default Event;

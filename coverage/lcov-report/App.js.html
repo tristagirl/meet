@@ -41,7 +41,53 @@
 16
 17
 18
-19</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -49,7 +95,42 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -59,19 +140,76 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { Component } from 'react';
-import './App.css';
-import EventList from './EventList';
-import CitySearch from './CitySearch';
-import NumberOfEvents from './NumberOfEvents';
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { Component } from "react";
+import "./App.css";
+import EventList from "./EventList";
+import CitySearch from "./CitySearch";
+import NumberOfEvents from "./NumberOfEvents";
+import { extractLocations, getEvents } from "./api"
+import "./nprogress.css";
 &nbsp;
 class App extends Component {
+  state = {
+    events: [],
+    locations: [],
+    numberOfEvents: 32,
+  }
+  componentDidMount() {
+    this.mounted = true;
+    getEvents().then((events) =&gt; {
+      if (this.mounted) {
+      this.setState({ events, locations: extractLocations(events) });
+     }
+    });
+  }
+&nbsp;
+  componentWillUnmount() {
+    this.mounted = false;
+  }
+&nbsp;
+  updateNumberofEvents = <span class="fstat-no" title="function not covered" >(n</span>umberOfEvents) =&gt; {
+<span class="cstat-no" title="statement not covered" >    this.setState(</span>
+      {
+      numberOfEvents,
+    },
+    this.updateEvents(this.state.locations, numberofEvents)
+    );
+  };
+  
+  updateEvents = (location, eventCount) =&gt; {
+    getEvents().then((events) =&gt; {
+      const locationEvents =
+        location === "all"
+          ? events
+          : events.filter((event) =&gt; event.location === location);
+      <span class="missing-if-branch" title="else path not taken" >E</span>if (this.mounted) {
+        this.setState({
+          events: locationEvents.slice(0, this.state.numberOfEvents),
+          currentLocation: location,
+          numberOfEvents: eventCount,
+        });
+      }
+    });
+  };
+&nbsp;
+&nbsp;
   render() {
     return (
-      &lt;div className="App"&gt;
-        &lt;EventList /&gt;
-        &lt;CitySearch /&gt;
+      &lt;div className='App'&gt;
+        &lt;CitySearch locations={this.state.locations} updateEvents={this.updateEvents}/&gt;
         &lt;NumberOfEvents /&gt;
+        &lt;EventList events={this.state.events} numberOfEvents={this.state.numberOfEvents}/&gt;
       &lt;/div&gt;
     );
   }
@@ -83,7 +221,7 @@ export default App;</pre></td></tr>
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Apr 07 2022 16:21:27 GMT-0500 (Central Daylight Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Apr 11 2022 12:41:44 GMT-0500 (Central Daylight Time)
 </div>
 </div>
 <script src="prettify.js"></script>

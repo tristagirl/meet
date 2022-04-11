@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import './App.css';
-import "./nprogress.css";
+import "./App.css";
 import EventList from "./EventList";
 import CitySearch from "./CitySearch";
 import NumberOfEvents from "./NumberOfEvents";
 import { extractLocations, getEvents } from "./api"
+import "./nprogress.css";
 
 class App extends Component {
   state = {
@@ -12,15 +12,11 @@ class App extends Component {
     locations: [],
     numberOfEvents: 32,
   }
-
   componentDidMount() {
     this.mounted = true;
     getEvents().then((events) => {
       if (this.mounted) {
-      this.setState({ 
-        events: events.slice(0, this.state.numberOfEvents),
-        locations: extractLocations(events),
-       });
+      this.setState({ events, locations: extractLocations(events) });
      }
     });
   }
@@ -29,6 +25,15 @@ class App extends Component {
     this.mounted = false;
   }
 
+  updateNumberofEvents = (numberOfEvents) => {
+    this.setState(
+      {
+      numberOfEvents,
+    },
+    this.updateEvents(this.state.locations, numberofEvents)
+    );
+  };
+  
   updateEvents = (location, eventCount) => {
     getEvents().then((events) => {
       const locationEvents =
@@ -39,15 +44,18 @@ class App extends Component {
         this.setState({
           events: locationEvents.slice(0, this.state.numberOfEvents),
           currentLocation: location,
+          numberOfEvents: eventCount,
         });
       }
     });
   };
 
+
   render() {
     return (
       <div className='App'>
         <CitySearch locations={this.state.locations} updateEvents={this.updateEvents}/>
+        <NumberOfEvents />
         <EventList events={this.state.events} numberOfEvents={this.state.numberOfEvents}/>
       </div>
     );
