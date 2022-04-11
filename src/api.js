@@ -76,7 +76,7 @@ export const getEvents = async () => {
   NProgress.start(); //This is a loading bar libray
 
   //Return mock data while testing
-  if (window.location.href.startsWith('http://localhost')) {
+  if (window.location.href.startsWith('http://localhost/')) {
     NProgress.done();
     return mockData;
   } 
