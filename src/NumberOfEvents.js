@@ -1,31 +1,40 @@
 import React, { Component } from 'react';
+// import './css/NumberOfEvents.css';
 
 class NumberOfEvents extends Component {
-     state = {
-         numberOfEvents: '32',
-       }
+  constructor(props) {
+    super(props);
 
-       handleInputChange = (event) => {
-         const value = event.target.value;
-        this.setState({
-            numberOfEvents: event.target.value,
-          });
+    this.state = {
+      number: 32
+    };
+  }
 
-    }
+  handleInputChanged = (event) => {
+    const value = this.RemoveNonNumeric(event.target.value);
+    this.setState({
+      number: value,
+    });
+    
+    //unit test for NumberOfEvents fails if it tries to run this function
+    if (this.props.updateNumberOfEvents)
+      this.props.updateNumberOfEvents(value);
+
+  }
+
+  RemoveNonNumeric = (text) => {
+    return text.replace(/[^0-9]/g, '');
+  }
 
 
-
-    render() {
-      return(
-      <div className="NumberOfEvents">
-          <input 
-          type="number" 
-          className="numberOfEvents"
-          value={this.state.numberOfEvents} 
-          onChange={this.handleInputChange}
-          />
+  render() {
+    return (
+      <div className="number-of-events">
+        <label id="number-of-events__label" htmlFor="number-of-events__input">Number of Events:</label>
+        <input id="number-of-events__input" value={this.state.number} onChange={this.handleInputChanged} />
       </div>
+    )
+  }
+}
 
-      )
- }};
 export default NumberOfEvents;

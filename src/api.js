@@ -1,12 +1,30 @@
-import { mockData } from "./mock-data";
-import axios from "axios";
+import { mockData } from './mock-data';
+import axios from 'axios';
 import NProgress from 'nprogress';
 
+/**
+ *
+ * @param {*} events:
+ * The following function should be in the “api.js” file.
+ * This function takes an events array, then uses map to create a new array with only locations.
+ * It will also remove all duplicates by creating another new array using the spread operator and spreading a Set.
+ * The Set will remove all duplicates from the array.
+ */
 export const extractLocations = (events) => {
-    var extractLocations = events.map((event) => event.location);
-    var locations = [...new Set(extractLocations)];
-    return locations;
+  var extractLocations = events.map((event) => event.location);
+  var locations = [...new Set(extractLocations)];
+  return locations;
 };
+
+const checkToken = async (accessToken) => {
+    /**
+     * Send access token to the google API server.
+     * If the token is valid, get a json response.
+     * If the token is invalid, we get an error object.
+     * If we get an error, that is checked by ' || tokenCheck.error '
+     * in the getAccessToken function. This would cause you to be 
+     * sent to the authorization screen to get a valid token.
+     */
 
 const checkToken = async (accessToken) => {
     const result = await fetch(`https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=${accessToken}`
