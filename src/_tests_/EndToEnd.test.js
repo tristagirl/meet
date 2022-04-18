@@ -1,53 +1,38 @@
-import React from "react";
-import { shallow } from "enzyme";
-import Event from "../Event";
-import { mockData } from "../mock-data";
+import puppeteer from 'puppeteer';
 
-describe("<Event /> component", () => {
-  let EventWrapper;
-
-  beforeAll(() => {
-      EventWrapper = shallow(<Event event={mockData[1]} />);
+describe('show/hide an event details', () => {
+  let browser;
+  let page;
+  beforeAll(async () => {
+    jest.setTimeout(100000);
+    browser = await puppeteer.launch({ 
+      headless: false, 
+      slowMo: 250, 
+      ignoreDefaultArgs: ['--disable-extensions']
+    });
+    page = await browser.newPage();
+    await page.goto('http://localhost:3000/');
+    await page.waitForSelector('.event');
   });
 
-  test("render event", () => {
-      expect(EventWrapper.find(".event")).toHaveLength(1);
-  })
-
-  test("render location", () => {
-      expect(EventWrapper.find(".location")).toHaveLength(1);
-  })
-
-  test("render summary", () => {
-      expect(EventWrapper.find(".summary")).toHaveLength(1);
-  })
-
-  test("render date", () => {
-      expect(EventWrapper.find(".start-date")).toHaveLength(1);
-  })
-
-
-  test("render the show details button", () => {
-      expect(EventWrapper.find(".show-details")).toHaveLength(1);
-  })
-
-  test("details are collapsed by default", () => {
-      expect(EventWrapper.state("collapsed")).toBe(true);
-  })
-
-  test("open details when show details is clicked", () => {
-      EventWrapper.setState({
-          collapsed: true
-      });
-      EventWrapper.find(".show-details").simulate("click");
-      expect(EventWrapper.state("collapsed")).toBe(false);
+  afterAll(() => {
+    browser.close();
   });
 
-  test("hide details when clicking button again after showing details", () => {
-      EventWrapper.setState({
-          collapsed: false
-      });
-      EventWrapper.find(".hide-details").simulate("click");
-      expect(EventWrapper.state("collapsed")).toBe(true);
+  test('An event element is collapsed by default', async () => {
+    const eventDetails = await page.$('.event .event__Details');
+    expect(eventDetails).toBeNull();
   });
-})
+
+  test('User can expand an event to see its details', async () => {
+    await page.click('.event .details-btn');
+    const eventDetails = await page.$('.event .event__Details');
+    expect(eventDetails).toBeDefined();
+  });
+
+  test('User can collapse an event to hide its details', async () => {
+    await page.click('.event .details-btn');
+    const eventDetails = await page.$('.event .event__Details');
+    expect(eventDetails).toBeNull();
+  });
+});
