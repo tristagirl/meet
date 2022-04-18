@@ -13,13 +13,43 @@ class App extends React.Component {
     numberOfEvents: '32',
     location: 'all'
   };
+  
+  updateNumberOfEvents = (eventCount) => {
+    this.setState({
+      numberOfEvents: eventCount
+    })
+    this.updateEvents(this.state.currentLocation, eventCount);
+  }
+
+  updateEvents = (location, eventCount) => {
+    getEvents().then((events => {
+      if (eventCount !== undefined) {
+        this.setState({
+          numberOfEvents: eventCount
+        })
+      }
+      // filter event list by location
+      let eventList = location !== 'all' ?
+        events.filter(event => event.location === location) :
+        events
+
+      // Shorten event list
+      let shortEventList = eventList.slice(0, this.state.numberOfEvents)
+
+      // Assign value to events state, assign currentLocation
+      this.setState({
+        events: shortEventList,
+        currentLocation: location
+      });
+    }));
+  }
 
   componentDidMount() {
     this.mounted = true;
     getEvents().then((events) => {
       if (this.mounted) {
         this.setState({
-          events: events.slice(0, this.state.numberOfEvents),
+          events,
           locations: extractLocations(events)
         });
       }
@@ -28,25 +58,6 @@ class App extends React.Component {
 
   componentWillUnmount() {
     this.mounted = false;
-  }
-
-  updateEvents = (location='all', number=this.state.numberOfEvents) => {
-    getEvents().then((events) => {
-      const locationEvents = (location === 'all') ?
-        events.slice(0, number) :
-        events.filter((event) => event.location === location).slice(0, number);
-
-      this.setState({
-        events: locationEvents.slice(0, number),
-        location
-      });
-    });
-  }
-
-  updateNumberOfEvents = (numberOfEvents) => {
-    this.setState({
-      numberOfEvents
-    }, this.updateEvents(this.state.location, numberOfEvents));
   }
 
 
